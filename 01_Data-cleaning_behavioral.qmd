@@ -1,0 +1,287 @@
+---
+title: "01_Data-cleaning (multiplication task)"
+format: html
+editor: visual
+---
+
+## Libraries
+
+```{r}
+# | message = False
+
+library(tidyverse)
+library(lme4)
+library(lmerTest)
+```
+
+## Import data files
+
+```{r}
+# | message = False
+folder_path <- "RAW-DATA_mult_behavioral"
+
+all_data <- list.files(path = folder_path, pattern = "\\.csv$", full.names = TRUE) %>% 
+  map_dfr(read_csv)|>
+  write_csv("ALL_RAW-DATA_mult_behavioral.csv")
+
+```
+
+## Demographics
+
+```{r}
+#| message: false
+#| 
+participant_info <- read_csv("participants_demo.csv") |>
+  select(-(id:testing_date)) |>
+  mutate(mult_fluency_group = factor(mult_fluency_group, 
+                                   levels = c("Low", "High")))
+```
+
+## 
+
+## Data Cleaning
+
+```{r}
+
+df <- read_csv("ALL_RAW-DATA_mult_behavioral.csv") |>
+    select(participant, blocks_file,  mult_stim,
+    type,
+    ProblemSize,
+    InterferenceLH,
+    InterferenceLevel,
+    mult_type,
+    Mult_Resp.corr,
+    Mult_Resp.rt,
+    Strategy_RESP.keys
+  ) |>
+  filter(!is.na(type)) |>
+  rename(
+    block_file = blocks_file,           
+    problem = mult_stim,            
+    problem_size = ProblemSize,             
+    interference = InterferenceLH, 
+    interference_score = InterferenceLevel,
+    stim_type = mult_type,
+    rt = Mult_Resp.rt,
+    correctness = Mult_Resp.corr,
+    strategy_type = Strategy_RESP.keys
+  )|>
+    mutate(correctness = case_when(
+    is.na(rt) ~ 0,                  # if RT is NA, keep as 0
+    correctness == 1 ~ 0,           # flip 1 to 0
+    correctness == 0 ~ 1            # flip 0 to 1
+  )) |> 
+  mutate(correctness = factor(
+    correctness, 
+    levels = c(0, 1), 
+    labels = c("Incorrect", "Correct")
+  ))|>
+  mutate(
+        type = factor(type, levels = c("small-sized_low-interference", 
+                                       "large-sized_low-interference", 
+                                   "small-sized_high-interference", 
+                                   "large-sized_high-interference")),
+    problem_size = factor(problem_size, 
+                          levels = c("small-sized", "large-sized")),
+    interference = factor(interference, 
+                            levels = c("low-interference", 
+                                       "high-interference")),
+    stim_type = factor(stim_type, 
+                       levels = c("CorrectRESP", "IncorrectRESP")),
+    strategy_type = factor(strategy_type, 
+                         levels = c('a', 'd'), 
+                         labels = c("Procedure", "Retrieval"))
+  )
+```
+
+## Descriptive
+
+All participants buttons coded on the wrong side except for participants 02, 03, 05, 06 (reverse coding for correctness).
+
+### Number of correct responses by fluency group and interference level
+
+```{r}
+
+df_accuracy <- participant_info |>
+  inner_join(df, by = c('participant'))
+
+df_accuracy2 <- participant_info |>
+  inner_join(df, by = c('participant'))|>
+  filter(correctness == 'Incorrect') |>
+  group_by(participant, mult_fluency_group) |>
+  summarise(cr_perc = n()/192 * 100)|>
+  ungroup()
+
+cr_percentage <- df_accuracy2 |>
+  group_by(mult_fluency_group)|>
+  summarise(mean_perc = mean(cr_perc), 
+            sd_perc = sd(cr_perc))
+
+## t-test
+
+t.test(cr_perc ~ mult_fluency_group, data = df_accuracy2)
+```
+
+### Number of correct responses by fluency group and interference level
+
+```{r}
+
+summary_accuracy <- participant_info |>
+  inner_join(df, by = c('participant')) |>
+  filter(correctness == 'Incorrect') |>
+  group_by(participant, mult_fluency_group, problem_size, interference) |>
+  summarise(cr_perc = n()/48 * 100)|>
+  ungroup()
+```
+
+## ANOVA
+
+```{r}
+
+```
+
+## GLMM
+
+```{r}
+# Simple model
+model_accuracy_simple <- glmer(
+  correctness ~ mult_fluency_group * interference * problem_size + 
+    (1 | participant), 
+  data = df_accuracy, 
+  family = binomial
+)
+
+summary(model_accuracy_simple)
+
+# Maximal model
+model_accuracy <- glmer(
+  correctness ~ mult_fluency_group * interference * problem_size + 
+    (1 + interference * problem_size | participant), 
+  data = df_accuracy, 
+  family = binomial,
+  control = glmerControl(optimizer = "bobyqa")
+)
+
+summary(model_accuracy)
+
+exp(fixef(model_accuracy)) # odds ratios
+exp(confint(model_accuracy, method = "Wald")) # confidence intervals
+exp(cbind(OR = fixef(model_accuracy), confint(model_accuracy, method = "Wald")))
+
+```
+
+```{r}
+
+# Extract only fixed-effect confidence intervals
+ci <- confint(model_accuracy, method = "Wald")
+ci_fixed <- ci[rownames(ci) %in% names(fixef(model_accuracy)), ]
+
+# Combine with odds ratios
+or_table <- data.frame(
+  OR = exp(fixef(model_accuracy)),
+  CI_low = exp(ci_fixed[, 1]),
+  CI_high = exp(ci_fixed[, 2])
+)
+
+# Round if desired
+or_table <- round(or_table, 3)
+
+or_table
+
+```
+
+### % strategy use by fluency group and interference level
+
+```{r}
+
+df_strategy <- participant_info |>
+  inner_join(df, by = c('participant')) |>
+  group_by(participant, mult_fluency_group, strategy_type, problem_size, interference) |>
+  summarise(
+    count = n(),
+    percentage = (count/48) * 100) |>
+  ungroup()
+
+retrieval_only <- df_strategy |>
+  filter(strategy_type == "Retrieval") 
+
+summary_stats_strategy <- retrieval_only |>
+  group_by(mult_fluency_group, problem_size, interference)|>
+  summarise(
+    mean_percentage = mean(percentage),
+    se = sd(percentage)/sqrt(n())
+  )
+
+t.test(percentage ~ mult_fluency_group, data = retrieval_only)
+
+```
+
+### Distribution of correct response percentages across experimental conditions
+
+```{r}
+
+cr_conditions <- participant_info |>
+  inner_join(df, by = c('participant')) |>
+  filter(correctness == 'Incorrect') |>
+  group_by(participant, mult_fluency_group, problem_size, interference) |>
+  summarise(cr_perc = n()/48 * 100)|>
+  ungroup()
+
+summary_stats_cr <- cr_conditions |>
+  group_by(mult_fluency_group, problem_size, interference) |>
+  summarise(
+    mean_cr = mean(cr_perc),
+    se = sd(cr_perc)/sqrt(n())
+  ) |>
+  ungroup()
+```
+
+### ggplot of CR - experimental conditions
+
+```{r}
+
+accuracy_plot <-ggplot(summary_stats_cr, aes(x = problem_size, y = mean_cr, group = interference, color = interference)) +
+  geom_line(size = 1) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean_cr - se, ymax = mean_cr + se), 
+                width = 0.2) +
+  facet_wrap(~mult_fluency_group) +
+  labs(
+    x = "Problem Size",
+    y = "Percentage of Correct Responses",
+    color = "Interference"
+  ) +
+  theme_minimal() +
+  scale_y_continuous(limits = c(80, 100)) +  
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom")
+
+ggsave("accuracy_plot.png", plot = accuracy_plot, width = 10, height = 6, dpi = 600)
+```
+
+### Strategy plot
+
+```{r}
+
+strategy_plot <-ggplot(summary_stats_strategy, 
+                       aes(x = problem_size, y = mean_percentage, 
+                           group = interference, color = interference)) +
+  geom_line(size = 1) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean_percentage - se, ymax = mean_percentage + se), 
+                width = 0.2) +
+  facet_wrap(~mult_fluency_group) +
+  labs(
+    x = "Problem Size",
+    y = "Percentage of Retrievals",
+    color = "Interference"
+  ) +
+  theme_minimal() +
+  scale_y_continuous(limits = c(60, 100)) +  
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom")
+
+strategy_plot
+
+ggsave("strategy_plot.png", plot = strategy_plot, width = 10, height = 6, dpi = 600)
+```

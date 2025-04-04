@@ -1,0 +1,28 @@
+﻿participant,fluency,Test Name,Start Time,Time Elapsed,Min Score,Max Score,Average Score,Participant Score,score,errors,totaltime
+02,High,Connect the Dots: Letters and Numbers,##########,89,1,120,40.5,36.51,36.51,2,39439
+03,High,Connect the Dots: Letters and Numbers,15/07/2023 0:19,80,1,120,40.5,39.78,39.78,1,36195
+04,High,Connect the Dots: Letters and Numbers,26/08/2023 23:16,87,1,120,40.5,28.95,28.95,4,49733
+05,High,Connect the Dots: Letters and Numbers,09/09/2023 3:28,86,1,120,40.5,39.71,39.71,1,36263
+06,High,Connect the Dots: Letters and Numbers,09/09/2023 12:48,173,1,120,40.5,48.86,48.86,2,29471
+07,High,Connect the Dots: Letters and Numbers,21/09/2023 5:33,90,1,120,40.5,42.93,42.93,0,33546
+08,High,Connect the Dots: Letters and Numbers,25/09/2023 21:37,223,1,120,40.5,45.3,45.3,1,31789
+09,High,Connect the Dots: Letters and Numbers,##########,164,1,120,40.5,49.63,49.63,1,29012
+10,High,Connect the Dots: Letters and Numbers,20/10/2023 23:16,74,1,120,40.5,40.41,40.41,1,35639
+11,Low,Connect the Dots: Letters and Numbers,15/07/2023 2:29,90,1,120,40.5,34.82,34.82,0,41350
+12,Low,Connect the Dots: Letters and Numbers,##########,92,1,120,40.5,30.96,30.96,1,46509
+13,Low,Connect the Dots: Letters and Numbers,30/09/2023 12:39,78,1,120,40.5,31.86,31.86,2,45204
+14,Low,Connect the Dots: Letters and Numbers,13/10/2023 22:04,82,1,120,40.5,42.2,42.2,1,34124
+15,Low,Connect the Dots: Letters and Numbers,##########,91,1,120,40.5,36.47,36.47,0,39480
+16,Low,Connect the Dots: Letters and Numbers,##########,98,1,120,40.5,28.05,28.05,2,51342
+17,Low,Connect the Dots: Letters and Numbers,##########,82,1,120,40.5,38.92,38.92,3,36998
+18,Low,Connect the Dots: Letters and Numbers,##########,71,1,120,40.5,31.14,31.14,4,46248
+19,Low,Connect the Dots: Letters and Numbers,14/10/2023 23:17,54,1,120,40.5,55.84,55.84,0,25790
+20,Low,Connect the Dots: Letters and Numbers,15/10/2023 1:33,82,1,120,40.5,34.04,34.04,3,42300
+21,High,Connect the Dots: Letters and Numbers,15/10/2023 5:58,136,1,120,40.5,21.4,21.4,3,67283
+22,High,Connect the Dots: Letters and Numbers,##########,69,1,120,40.5,40.94,40.94,1,35174
+23,High,Connect the Dots: Letters and Numbers,##########,60,1,120,40.5,52.61,52.61,1,27369
+24,High,Connect the Dots: Letters and Numbers,##########,73,1,120,40.5,38.91,38.91,2,37013
+25,High,Connect the Dots: Letters and Numbers,##########,61,1,120,40.5,56.74,56.74,1,25378
+26,Low,Connect the Dots: Letters and Numbers,##########,69,1,120,40.5,49.29,49.29,0,29215
+27,Low,Connect the Dots: Letters and Numbers,##########,99,1,120,40.5,33.29,33.29,0,43253
+28,Low,Connect the Dots: Letters and Numbers,20/10/2023 4:58,78,1,120,40.5,38.64,38.64,2,37266

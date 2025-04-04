@@ -1,0 +1,28 @@
+﻿participant,fluency,Test Name,Start Time,Time Elapsed,Min Score,Max Score,Average Score,score,digitSymbol_score,digitSymbol_num_correct,digitSymbol_num_responses,digitSymbol_meanRTc,digitSymbol_medianRTc,digitSymbol_sdRTc,responseDevice,testVersion
+02,High,Matching Shapes and Numbers,15/07/2023 1:29,117,0,150,53.89,54,54,54,55,1507.37,1350.25,575.09,keyboard,DSC_2019
+03,High,Matching Shapes and Numbers,15/07/2023 0:36,165,0,150,53.89,74,74,74,77,1000.23,955.25,353.52,keyboard,DSC_2019
+04,High,Matching Shapes and Numbers,26/08/2023 23:23,114,0,150,53.96,50,50,50,51,1620.64,1580,420.92,keyboard,DSC_2019
+05,High,Matching Shapes and Numbers,##########,140,0,150,53.96,49,49,49,51,1589.57,1516,571.76,keyboard,DSC_2019
+06,High,Matching Shapes and Numbers,09/09/2023 13:05,139,0,150,53.96,59,59,59,65,1302.45,1191.7,473.44,keyboard,DSC_2019
+07,High,Matching Shapes and Numbers,##########,119,0,150,53.96,45,45,45,46,1776.12,1799,437.71,keyboard,DSC_2019
+08,High,Matching Shapes and Numbers,25/09/2023 21:53,147,0,150,53.96,56,56,56,59,1369.71,1323.5,499.99,keyboard,DSC_2019
+09,High,Matching Shapes and Numbers,14/10/2023 5:16,136,0,150,53.96,53,53,53,54,1548.58,1463,465.73,keyboard,DSC_2019
+10,High,Matching Shapes and Numbers,20/10/2023 23:26,145,0,150,53.96,70,70,70,70,1165.05,1128.6,342.27,keyboard,DSC_2019
+11,Low,Matching Shapes and Numbers,15/07/2023 2:41,115,0,150,53.89,55,55,55,56,1427.42,1271.2,538.72,keyboard,DSC_2019
+12,Low,Matching Shapes and Numbers,08/09/2023 22:39,136,0,150,53.96,61,61,61,63,1271.9,1192,396.57,keyboard,DSC_2019
+13,Low,Matching Shapes and Numbers,##########,122,0,150,53.96,55,55,55,58,1420.7,1319.9,482.25,keyboard,DSC_2019
+14,Low,Matching Shapes and Numbers,##########,127,0,150,53.96,49,49,49,52,1615.65,1443.6,578.3,keyboard,DSC_2019
+15,Low,Matching Shapes and Numbers,14/10/2023 0:00,120,0,150,53.96,56,56,56,57,1388.84,1276.55,421.5,keyboard,DSC_2019
+16,Low,Matching Shapes and Numbers,##########,124,0,150,53.96,46,46,46,47,1782.95,1532.5,866.93,keyboard,DSC_2019
+17,Low,Matching Shapes and Numbers,14/10/2023 0:57,151,0,150,53.96,50,50,50,52,1575.74,1421.85,1125.48,keyboard,DSC_2019
+18,Low,Matching Shapes and Numbers,##########,119,0,150,53.96,61,61,61,64,1295.06,1223.8,476.29,keyboard,DSC_2019
+19,Low,Matching Shapes and Numbers,##########,116,0,150,53.96,50,50,50,50,1654.12,1562.45,576.5,keyboard,DSC_2019
+20,Low,Matching Shapes and Numbers,15/10/2023 1:50,131,0,150,53.96,58,58,58,58,1396.81,1201.6,567.12,keyboard,DSC_2019
+21,High,Matching Shapes and Numbers,##########,124,0,150,53.96,39,39,39,58,1539.09,1393.6,569.99,keyboard,DSC_2019
+22,High,Matching Shapes and Numbers,21/10/2023 1:21,113,0,150,53.96,58,58,58,60,1373.35,1358.8,369.94,keyboard,DSC_2019
+23,High,Matching Shapes and Numbers,##########,111,0,150,53.96,63,63,63,63,1334.97,1302.9,500.92,keyboard,DSC_2019
+24,High,Matching Shapes and Numbers,23/10/2023 5:06,120,0,150,53.96,59,59,59,65,1323.82,1182.4,499.19,keyboard,DSC_2019
+25,High,Matching Shapes and Numbers,##########,168,0,150,53.96,49,49,49,50,1741.34,1611.3,528.64,keyboard,DSC_2019
+26,Low,Matching Shapes and Numbers,##########,131,0,150,53.96,47,47,47,47,1779.02,1621.9,551.59,keyboard,DSC_2019
+27,Low,Matching Shapes and Numbers,18/10/2023 5:13,130,0,150,53.96,46,46,46,48,1702.25,1594.8,487.97,keyboard,DSC_2019
+28,Low,Matching Shapes and Numbers,##########,124,0,150,53.96,59,59,59,61,1360.56,1283.6,435.96,keyboard,DSC_2019

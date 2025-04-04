@@ -1,0 +1,28 @@
+﻿participant,fluency,Test Name,Start Time,Time Elapsed,Min Score,Max Score,Average Score,Participant Score,score,meanRT,medianRT,sdRT,responseDevice,testVersion
+02,High,Fast Reactions Test,15/07/2023 1:32,80,1,100,32.88,36.95,36.95,270.62,256.45,81.16,keyboard,SimpleRT_2019.Jun19
+03,High,Fast Reactions Test,15/07/2023 0:45,92,1,100,32.88,36.55,36.55,273.57,257.4,60.01,keyboard,SimpleRT_2019.Jun19
+04,High,Fast Reactions Test,26/08/2023 23:26,92,1,100,33.11,39.53,39.53,252.96,241.95,89.46,keyboard,SimpleRT_2019.Jun19
+05,High,Fast Reactions Test,##########,504,1,100,33.11,36.52,36.52,273.81,247.95,96.88,keyboard,SimpleRT_2019.Jun19
+06,High,Fast Reactions Test,09/09/2023 13:10,93,1,100,33.11,41.52,41.52,240.82,230.4,95.84,keyboard,SimpleRT_2019.Jun19
+07,High,Fast Reactions Test,21/09/2023 23:06,76,1,100,33.11,37.96,37.96,263.44,262.45,16.9,keyboard,SimpleRT_2019.Jun19
+08,High,Fast Reactions Test,25/09/2023 21:56,308,1,100,33.11,37.86,37.86,264.13,264,28.47,keyboard,SimpleRT_2019.Jun19
+09,High,Fast Reactions Test,14/10/2023 5:21,99,1,100,33.11,38.57,38.57,259.29,245.25,39.56,keyboard,SimpleRT_2019.Jun19
+10,High,Fast Reactions Test,20/10/2023 23:30,88,1,100,33.11,36.5,36.5,273.96,256.15,90.31,keyboard,SimpleRT_2019.Jun19
+11,Low,Fast Reactions Test,15/07/2023 2:44,91,1,100,32.88,43.23,43.23,231.34,221.65,42.45,keyboard,SimpleRT_2019.Jun19
+12,Low,Fast Reactions Test,08/09/2023 22:42,87,1,100,33.11,30.69,30.69,325.81,322.5,89.49,keyboard,SimpleRT_2019.Jun19
+13,Low,Fast Reactions Test,##########,93,1,100,33.11,35.7,35.7,280.14,272.6,62.73,keyboard,SimpleRT_2019.Jun19
+14,Low,Fast Reactions Test,13/10/2023 22:19,84,1,100,33.11,37.6,37.6,265.96,257.15,99.07,keyboard,SimpleRT_2019.Jun19
+15,Low,Fast Reactions Test,##########,85,1,100,33.11,38.39,38.39,260.47,266.6,65.92,keyboard,SimpleRT_2019.Jun19
+16,Low,Fast Reactions Test,14/10/2023 0:21,90,1,100,33.11,30.75,30.75,325.24,332.85,48.67,keyboard,SimpleRT_2019.Jun19
+17,Low,Fast Reactions Test,##########,84,1,100,33.11,36.57,36.57,273.44,262.65,54.07,keyboard,SimpleRT_2019.Jun19
+18,Low,Fast Reactions Test,##########,84,1,100,33.11,44.18,44.18,226.36,234.75,35.31,keyboard,SimpleRT_2019.Jun19
+19,Low,Fast Reactions Test,##########,79,1,100,33.11,44.51,44.51,224.69,259.2,95.4,keyboard,SimpleRT_2019.Jun19
+20,Low,Fast Reactions Test,15/10/2023 1:55,79,1,100,33.11,37.37,37.37,267.62,236.85,126.27,keyboard,SimpleRT_2019.Jun19
+21,High,Fast Reactions Test,15/10/2023 6:12,79,1,100,33.11,40.1,40.1,249.37,258.7,68.36,keyboard,SimpleRT_2019.Jun19
+22,High,Fast Reactions Test,##########,87,1,100,33.11,32.2,32.2,310.6,310.55,33.02,keyboard,SimpleRT_2019.Jun19
+23,High,Fast Reactions Test,##########,77,1,100,33.11,39.52,39.52,253.04,257.9,56.46,keyboard,SimpleRT_2019.Jun19
+24,High,Fast Reactions Test,23/10/2023 5:09,114,1,100,33.11,35.62,35.62,280.74,258.4,128.09,keyboard,SimpleRT_2019.Jun19
+25,High,Fast Reactions Test,##########,89,1,100,33.11,32.69,32.69,305.91,291.5,53.14,keyboard,SimpleRT_2019.Jun19
+26,Low,Fast Reactions Test,16/10/2023 4:23,95,1,100,33.11,25.57,25.57,391.15,326.6,130.94,keyboard,SimpleRT_2019.Jun19
+27,Low,Fast Reactions Test,##########,129,1,100,33.11,34.71,34.71,288.14,251.9,137.47,keyboard,SimpleRT_2019.Jun19
+28,Low,Fast Reactions Test,##########,85,1,100,33.11,40.93,40.93,244.31,237.9,26.65,keyboard,SimpleRT_2019.Jun19

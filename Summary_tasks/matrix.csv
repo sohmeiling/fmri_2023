@@ -1,0 +1,28 @@
+﻿participant,fluency,Test Name,Start Time,Time Elapsed,Min Score,Max Score,Average Score,Participant Score,score,accuracy,meanRTc,medianRTc,sdRTc,responseDevice,testVersion
+02,High,Visual Patterns Test,15/07/2023 1:27,106,0,35,24.88,18,18,0.78,2570.93,2368.9,1032.24,mouse,matrix_reasoning_2019
+03,High,Visual Patterns Test,15/07/2023 0:24,735,0,35,24.88,34,34,0.94,14919.61,9062.2,14780.8,mouse,matrix_reasoning_2019
+04,High,Visual Patterns Test,26/08/2023 23:19,249,0,35,24.88,24,24,0.86,4505.13,3843.25,2781.54,mouse,matrix_reasoning_2019
+05,High,Visual Patterns Test,09/09/2023 3:30,325,0,35,24.88,25,25,0.74,5451.12,4259.4,4085.58,mouse,matrix_reasoning_2019
+06,High,Visual Patterns Test,09/09/2023 12:57,439,0,35,24.88,25,25,0.74,5042.59,3976.5,3555.02,mouse,matrix_reasoning_2019
+07,High,Visual Patterns Test,21/09/2023 7:07,870,0,35,24.88,30,30,0.83,15352.13,7232.2,25266.05,mouse,matrix_reasoning_2019
+08,High,Visual Patterns Test,25/09/2023 21:42,620,0,35,24.88,29,29,0.85,7341.03,4875,5875.53,mouse,matrix_reasoning_2019
+09,High,Visual Patterns Test,14/10/2023 5:00,988,0,35,24.88,29,29,0.83,9340.42,6376,9384.36,mouse,matrix_reasoning_2019
+10,High,Visual Patterns Test,20/10/2023 23:19,465,0,35,24.88,22,22,0.71,12113.46,8926.8,11552.41,mouse,matrix_reasoning_2019
+11,Low,Visual Patterns Test,15/07/2023 2:32,507,0,35,24.88,30,30,0.83,8281.56,4498.5,9486.24,mouse,matrix_reasoning_2019
+12,Low,Visual Patterns Test,##########,284,0,35,24.88,25,25,0.83,4275.54,3022.1,3286.94,mouse,matrix_reasoning_2019
+13,Low,Visual Patterns Test,##########,847,0,35,24.88,31,31,0.86,20092.9,10755.2,25644.57,mouse,matrix_reasoning_2019
+14,Low,Visual Patterns Test,13/10/2023 22:07,505,0,35,24.88,29,29,0.81,8991.13,6014.1,8346.62,mouse,matrix_reasoning_2019
+15,Low,Visual Patterns Test,##########,356,0,35,24.88,31,31,0.86,6426.1,3969.2,6652.76,mouse,matrix_reasoning_2019
+16,Low,Visual Patterns Test,##########,146,0,35,24.88,19,19,0.79,4091.72,3601.7,2355.11,mouse,matrix_reasoning_2019
+17,Low,Visual Patterns Test,14/10/2023 0:52,271,0,35,24.88,27,27,0.82,5579.74,3721.6,4528.07,mouse,matrix_reasoning_2019
+18,Low,Visual Patterns Test,##########,176,0,35,24.88,19,19,0.68,4069,4007.1,2871.2,mouse,matrix_reasoning_2019
+19,Low,Visual Patterns Test,##########,445,0,35,24.88,30,30,0.86,10658.16,7317.3,9336.9,mouse,matrix_reasoning_2019
+20,Low,Visual Patterns Test,##########,776,0,35,24.88,29,29,0.81,8564.28,5681.9,7021.21,mouse,matrix_reasoning_2019
+21,High,Visual Patterns Test,15/10/2023 6:02,388,0,35,24.88,32,32,0.89,8931.02,4022.15,12404.06,mouse,matrix_reasoning_2019
+22,High,Visual Patterns Test,##########,495,0,35,24.88,29,29,0.81,9714.26,5331.5,11236.56,mouse,matrix_reasoning_2019
+23,High,Visual Patterns Test,25/10/2023 4:45,222,0,35,24.88,33,33,0.92,4883.94,3230.9,4403.69,mouse,matrix_reasoning_2019
+24,High,Visual Patterns Test,23/10/2023 5:02,211,0,35,24.88,25,25,0.78,4762.25,3825.1,3830.86,mouse,matrix_reasoning_2019
+25,High,Visual Patterns Test,##########,332,0,35,24.88,26,26,0.87,7594.69,6908.9,4579.31,mouse,matrix_reasoning_2019
+26,Low,Visual Patterns Test,16/10/2023 4:14,248,0,35,24.88,26,26,0.87,5551.28,4566.05,3685.25,mouse,matrix_reasoning_2019
+27,Low,Visual Patterns Test,##########,270,0,35,24.88,27,27,0.77,5355.65,3915.8,3323.85,mouse,matrix_reasoning_2019
+28,Low,Visual Patterns Test,20/10/2023 5:01,128,0,35,24.88,17,17,0.71,2894.86,1964.9,2202.33,mouse,matrix_reasoning_2019

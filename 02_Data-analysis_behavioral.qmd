@@ -1,0 +1,427 @@
+---
+title: "02_Data-analysis (Mult)"
+format: html
+editor: visual
+---
+
+## Library
+
+```{r}
+#| message: False
+
+library(lme4)
+library(lmerTest)
+library(tidyverse)
+library(performance)
+library(emmeans)
+library(ggeffects)
+library(ggplot2)
+```
+
+### Import
+
+```{r}
+
+participant_info <- read_csv("participants_demo.csv", show_col_types = FALSE) |>
+  select(-(id:testing_date)) |>
+  mutate(mult_fluency_group = factor(mult_fluency_group, 
+                                   levels = c("Low", "High")))
+
+### ------------------------------------------------
+
+folder_path <- "RAW-DATA_mult_behavioral"
+
+all_data <- list.files(path = folder_path, pattern = "\\.csv$", full.names = TRUE) %>% 
+  map_dfr(read_csv, show_col_types = FALSE)
+
+df <- all_data |>
+    select(participant, blocks_file,  mult_stim,
+    type,
+    ProblemSize,
+    InterferenceLH,
+    InterferenceLevel,
+    mult_type,
+    Mult_Resp.corr,
+    Mult_Resp.rt,
+    Strategy_RESP.keys
+  ) |>
+  filter(!is.na(type)) |>
+  rename(
+    block_file = blocks_file,           
+    problem = mult_stim,            
+    problem_size = ProblemSize,             
+    interference = InterferenceLH, 
+    interference_score = InterferenceLevel,
+    stim_type = mult_type,
+    rt = Mult_Resp.rt,
+    correctness = Mult_Resp.corr,
+    strategy_type = Strategy_RESP.keys
+  )|>
+      mutate(correctness = case_when(
+    is.na(rt) ~ 0,                  # if RT is NA, keep as 0
+    correctness == 1 ~ 0,           # flip 1 to 0
+    correctness == 0 ~ 1            # flip 0 to 1
+  ))|>
+    mutate(correctness = factor(
+    correctness, 
+    levels = c(0, 1), 
+    labels = c("Incorrect", "Correct")
+  ))|>
+  mutate(
+        type = factor(type, levels = c("small-sized_low-interference", 
+                                       "large-sized_low-interference", 
+                                   "small-sized_high-interference", 
+                                   "large-sized_high-interference")),
+    problem_size = factor(problem_size, 
+                          levels = c("small-sized", "large-sized")),
+    interference = factor(interference, 
+                            levels = c("low-interference", 
+                                       "high-interference")),
+    stim_type = factor(stim_type, 
+                       levels = c("CorrectRESP", "IncorrectRESP")),
+    strategy_type = factor(strategy_type, 
+                         levels = c('a', 'd'), 
+                         labels = c("Procedure", "Retrieval"))
+  )
+```
+
+### Multilevel analysis
+
+```{r}
+
+# reverse coding
+
+df_analysis_acc <- participant_info |>
+  inner_join(df, by = c('participant'))
+
+df_analysis <- participant_info |>
+  inner_join(df, by = c('participant'))|>
+  filter(correctness == "Incorrect") |>  
+  mutate(log_rt = log(rt)) 
+```
+
+## GLMER (Accuracy)
+
+```{r}
+
+max_correct <- glmer(
+  correctness ~ problem_size * interference * mult_fluency_group +
+    (1 + problem_size + interference | participant) +
+    (1 | problem),
+  data = df_analysis_acc,
+  family = binomial,
+  control = glmerControl(optimizer = "bobyqa")
+)
+
+summary(max_correct)
+```
+
+### Model Performance
+
+```{r}
+# Check random effects structure
+performance::model_performance(max_correct)
+
+# See if singular fit
+lme4::isSingular(max_correct)
+
+```
+
+### Null model
+
+```{r}
+max_correct_null <- glmer(correctness ~ problem_size * interference + 
+                            (1 + problem_size + interference | participant) + (1 | problem),
+                          data = df_analysis_acc, family = binomial)
+
+anova(max_correct_null, max_correct, test = "Chisq")
+
+```
+
+### log-odds and odds ratios
+
+```{r}
+
+exp(fixef(max_correct)) # odds ratios
+exp(confint(max_correct, method = "Wald")) # confidence intervals
+exp(cbind(OR = fixef(max_correct), confint(max_correct, method = "Wald")))
+
+```
+
+## GLMER (Retrievals vs. Procedural)
+
+Releveling
+
+```{r}
+
+# Procedure = 0, Retrieval = 1
+table(df_analysis_acc$strategy_type)
+
+# Cross-tabulation by each predictor
+table(df_analysis_acc$problem_size, df_analysis_acc$strategy_type)
+table(df_analysis_acc$interference, df_analysis_acc$strategy_type)
+table(df_analysis_acc$mult_fluency_group, df_analysis_acc$strategy_type)
+```
+
+Recoding for a stable model (instability due to higher count for retrievals)
+
+```{r}
+df_analysis_acc2 <- df_analysis_acc %>%
+  mutate(strategy_binary = ifelse(strategy_type == "Procedure", 1, 0))
+
+table(df_analysis_acc2$strategy_binary)
+
+```
+
+### Max Model
+
+```{r}
+
+strategy_model <- glmer(
+  strategy_binary ~ problem_size * interference * mult_fluency_group +
+    (1 + problem_size + interference | participant) +
+    (1 | problem),
+  data = df_analysis_acc2,
+  family = binomial,
+  control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 2e5))
+)
+
+
+summary(strategy_model)
+```
+
+### log-odds and odds ratios
+
+```{r}
+
+exp(cbind(
+  OR = fixef(strategy_model),
+  confint(strategy_model, method = "Wald")
+))
+
+```
+
+### Plots
+
+```{r}
+# Correct the rate: 1 = retrieval, 0 = procedure
+summary_df <- df_analysis_acc2 %>%
+  filter(!is.na(strategy_binary)) %>%
+  group_by(mult_fluency_group, problem_size, interference) %>%
+  summarise(
+    n = n(),
+    retrieval_rate = mean(strategy_binary == 0),  # TRUE for retrievals
+    se = sd(strategy_binary == 0) / sqrt(n),
+    retrieval_percent = retrieval_rate * 100,
+    ymin = retrieval_percent - 1.96 * se * 100,
+    ymax = retrieval_percent + 1.96 * se * 100,
+    .groups = "drop"
+  )
+
+
+plot_strategy <- ggplot(summary_df, aes(x = problem_size, y = retrieval_percent, color = interference, group = interference)) +
+  geom_point(size = 3) +
+  geom_line(linewidth = 1.2) +
+  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.15) +
+  facet_wrap(~ mult_fluency_group) +
+  labs(
+    title = "Observed Retrieval Strategy Use",
+    x = "Problem Size",
+    y = "Percentage of Retrievals",
+    color = "Interference"
+  ) +
+  scale_color_manual(values = c("firebrick", "steelblue")) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+
+# Save as PNG
+ggsave(
+  filename = "retrieval_strategy_plot.png",
+  plot = plot_strategy,
+  path = "figures",        
+  width = 8,
+  height = 5,
+  dpi = 300
+)
+
+
+
+
+```
+
+## LMM (RT)
+
+```{r}
+
+df_rt <- df_analysis_acc2 %>%
+  filter(correctness == "Correct") %>%
+  mutate(
+    log_rt = log(rt)
+  )
+
+hist(df_rt$log_rt, breaks = 40)
+
+rt_model <- lmer(
+  log_rt ~ problem_size * interference * mult_fluency_group +
+    (1 + problem_size * interference | participant) +
+    (1 | problem),
+  data = df_rt
+)
+
+summary(rt_model)
+
+
+m1 <- lmer(log_rt ~ problem_size * interference * mult_fluency_group + 
+           (1|participant) + (1|problem),
+           data = df_analysis)
+
+# Random intercepts and random slopes for within-subject factors
+m2 <- lmer(log_rt ~ problem_size * interference * mult_fluency_group + 
+           (1 + problem_size * interference|participant) + (mult_fluency_group|problem),
+           data = df_analysis)
+
+summary(m2)
+
+# Compare models
+anova(m1, m2)
+```
+
+### emmeans
+
+```{r}
+# compare problem size × interference by fluency
+emm_options(pbkrtest.limit = 5000)
+
+emm <- emmeans(rt_model, ~ problem_size * interference * mult_fluency_group)
+pairs(emm, by = "mult_fluency_group")  
+summary(emm, type = "response")  # gives estimates on original RT scale
+
+
+```
+
+means for each conditions
+
+```{r}
+
+# Get estimated marginal means for each condition (on original RT scale)
+emm_summary <- emmeans(rt_model, ~ problem_size * interference * mult_fluency_group)
+
+# Back-transform from log RT to RT in milliseconds
+emm_summary_resp <- summary(emm_summary, type = "response")
+
+emm_df <- as.data.frame(emm_summary_resp)
+
+# Print the table
+print(emm_summary_resp)
+
+```
+
+### Plots for interactions
+
+```{r}
+
+# Use back-transformed predictions
+emm_summary_resp <- summary(emmeans(rt_model, ~ problem_size * interference * mult_fluency_group), type = "response")
+
+# Convert to ms
+emm_summary_resp <- emm_summary_resp |>
+  mutate(rt_ms = exp(emmean) * 1000,
+         lower = exp(lower.CL) * 1000,
+         upper = exp(upper.CL) * 1000)
+
+# Plot
+rt_emmeans_plot <-ggplot(emm_summary_resp, aes(x = problem_size, y = rt_ms, color = interference, group = interference)) +
+  geom_point(size = 3) +
+  geom_line(linewidth = 1.2) +
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.15) +
+  facet_wrap(~ mult_fluency_group) +
+  labs(
+    title = "Predicted Reaction Time by Problem Size, Interference, and Fluency Group",
+    x = "Problem Size",
+    y = "Estimated RT (ms)",
+    color = "Interference"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+
+ggsave(
+  filename = "figures/rt_emmeans_plot.png",      
+  plot = rt_emmeans_plot,               
+  width = 8,                             
+  height = 5,                            
+  dpi = 300                              
+)
+
+```
+
+Summary
+
+```{r}
+summary(m1)
+summary(m2)
+```
+
+### posthoc
+
+```{r}
+library(emmeans)
+emm_options(pbkrtest.limit = 4796)
+
+emm <- emmeans(m2, ~ problem_size | interference | mult_fluency_group)
+pairs <- pairs(emm)
+pairs_adjusted <- pairs(emm, adjust = "tukey")
+
+summary(emm)
+pairs(emm)
+pairs_adjusted
+
+```
+
+#### contrast
+
+```{r}
+
+contrasts <- emmeans(m2, pairwise ~ problem_size | interference | mult_fluency_group)
+
+int_contrast <- contrast(emm, interaction = c("pairwise", "pairwise"), 
+                        by = "mult_fluency_group")
+summary(int_contrast, adjust = "tukey")
+
+```
+
+### plot
+
+```{r}
+
+emm_df <- as.data.frame(emm)
+  
+
+interaction_plot <- ggplot(emm_df, aes(x = problem_size, y = emmean, 
+                   color = mult_fluency_group, 
+                   linetype = interference)) +
+  geom_line(aes(group = interaction(mult_fluency_group, interference)), 
+            size = 1) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = emmean - SE, 
+                    ymax = emmean + SE), 
+                width = 0.2) +
+  scale_color_brewer(palette = "Set2", name = "Multiplication Fluency") +
+  scale_linetype_discrete(name = "Interference") +
+  labs(x = "Problem Size",
+       y = "Log Reaction Time") +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    panel.grid.minor = element_blank(),
+    axis.text = element_text(size = 11),
+    axis.title = element_text(size = 12, face = "bold")
+  )
+
+ggsave("interaction_plot.png", plot = interaction_plot, width = 10, height = 6, dpi = 600)
+```

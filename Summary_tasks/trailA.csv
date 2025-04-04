@@ -1,0 +1,28 @@
+﻿participant,fluency,Test Name,Start Time,Time Elapsed,Min Score,Max Score,Average Score,Participant Score,score,errors,totaltime
+02,High,Connect the Dots: Numbers,15/07/2023 1:23,84,1,120,56.87,47.28,47.28,2,30460
+03,High,Connect the Dots: Numbers,15/07/2023 0:18,75,1,120,56.87,69.21,69.21,0,20806
+04,High,Connect the Dots: Numbers,26/08/2023 23:14,92,1,120,56.87,44.42,44.42,2,32419
+05,High,Connect the Dots: Numbers,09/09/2023 3:26,93,1,120,56.87,55.56,55.56,0,25919
+06,High,Connect the Dots: Numbers,09/09/2023 12:46,115,1,120,56.87,59.87,59.87,4,24053
+07,High,Connect the Dots: Numbers,21/09/2023 5:31,110,1,120,56.87,47.28,47.28,0,30454
+08,High,Connect the Dots: Numbers,25/09/2023 21:36,61,1,120,56.87,65.5,65.5,0,21985
+09,High,Connect the Dots: Numbers,##########,86,1,120,56.87,58.93,58.93,1,24435
+10,High,Connect the Dots: Numbers,20/10/2023 23:15,71,1,120,56.87,76.63,76.63,0,18791
+11,Low,Connect the Dots: Numbers,##########,82,1,120,56.87,47.2,47.2,0,30509
+12,Low,Connect the Dots: Numbers,08/09/2023 22:30,86,1,120,56.87,61.59,61.59,0,23381
+13,Low,Connect the Dots: Numbers,30/09/2023 12:38,49,1,120,56.87,57.77,57.77,2,24926
+14,Low,Connect the Dots: Numbers,##########,130,1,120,56.87,46.16,46.16,2,31199
+15,Low,Connect the Dots: Numbers,13/10/2023 23:49,69,1,120,56.87,55.62,55.62,0,25889
+16,Low,Connect the Dots: Numbers,14/10/2023 0:26,80,1,120,56.87,43.5,43.5,1,33105
+17,Low,Connect the Dots: Numbers,##########,88,1,120,56.87,48.38,48.38,1,29765
+18,Low,Connect the Dots: Numbers,14/10/2023 4:14,130,1,120,56.87,68.11,68.11,1,21142
+19,Low,Connect the Dots: Numbers,##########,56,1,120,56.87,65.37,65.37,0,22027
+20,Low,Connect the Dots: Numbers,##########,86,1,120,56.87,26.97,26.97,17,53384
+21,High,Connect the Dots: Numbers,15/10/2023 5:56,97,1,120,56.87,59.96,59.96,0,24016
+22,High,Connect the Dots: Numbers,21/10/2023 1:06,56,1,120,56.87,65.1,65.1,2,22121
+23,High,Connect the Dots: Numbers,##########,45,1,120,56.87,79.99,79.99,1,18002
+24,High,Connect the Dots: Numbers,##########,95,1,120,56.87,96.94,96.94,0,14854
+25,High,Connect the Dots: Numbers,01/11/2023 6:09,40,1,120,56.87,101.59,101.59,0,14174
+26,Low,Connect the Dots: Numbers,##########,81,1,120,56.87,35.29,35.29,2,40808
+27,Low,Connect the Dots: Numbers,18/10/2023 5:03,122,1,120,56.87,55.25,55.25,0,26063
+28,Low,Connect the Dots: Numbers,20/10/2023 4:57,58,1,120,56.87,64.11,64.11,1,22461

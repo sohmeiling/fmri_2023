@@ -1,0 +1,28 @@
+﻿participant,fluency,Test Name,Start Time,Time Elapsed,Min Score,Max Score,Average Score,Participant Score,score,correct,meanRTc,medianRTc,sdRTc,responseDevice,testVersion
+02,High,Fast Choice Test,15/07/2023 1:34,104,1,25,11.49,16.22,16.22,0.9666666666666667,616.66,600,128.86,keyboard,ChoiceRT_2019.v1.Jun19
+03,High,Fast Choice Test,15/07/2023 0:47,136,1,25,11.49,13.26,13.26,1,753.98,728.95,183.06,keyboard,ChoiceRT_2019.v1.Jun19
+04,High,Fast Choice Test,26/08/2023 23:28,157,1,25,11.49,7.64,7.64,0.9333333333333333,1308.74,1174.3,704.69,keyboard,ChoiceRT_2019.v1.Jun19
+05,High,Fast Choice Test,##########,142,1,25,11.49,13.34,13.34,0.966666667,749.68,721,154.1,keyboard,ChoiceRT_2019.v1.Jun19
+06,High,Fast Choice Test,##########,169,1,25,11.49,14.01,14.01,0.966666667,713.94,715.3,118.27,keyboard,ChoiceRT_2019.v1.Jun19
+07,High,Fast Choice Test,21/09/2023 23:07,130,1,25,11.49,12.01,12.01,1,832.88,823.55,112.97,keyboard,ChoiceRT_2019.v1.Jun19
+08,High,Fast Choice Test,25/09/2023 22:01,119,1,25,11.49,12.66,12.66,0.9666666666666667,789.62,795,175.68,keyboard,ChoiceRT_2019.v1.Jun19
+09,High,Fast Choice Test,14/10/2023 5:22,119,1,25,11.49,11.81,11.81,0.9666666666666667,847.07,777.4,261.72,keyboard,ChoiceRT_2019.v1.Jun19
+10,High,Fast Choice Test,20/10/2023 23:32,167,1,25,11.49,12.69,12.69,1,788.04,739.4,195.47,keyboard,ChoiceRT_2019.v1.Jun19
+11,Low,Fast Choice Test,15/07/2023 2:45,112,1,25,11.49,17.42,17.42,0.9,574.2,548,166.92,keyboard,ChoiceRT_2019.v1.Jun19
+12,Low,Fast Choice Test,##########,129,1,25,11.49,12.68,12.68,1,788.69,752.9,149.02,keyboard,ChoiceRT_2019.v1.Jun19
+13,Low,Fast Choice Test,##########,129,1,25,11.49,12.91,12.91,0.933333333,774.66,736.9,205.77,keyboard,ChoiceRT_2019.v1.Jun19
+14,Low,Fast Choice Test,13/10/2023 22:20,150,1,25,11.49,11.62,11.62,0.8333333333333334,860.31,739.1,338.27,keyboard,ChoiceRT_2019.v1.Jun19
+15,Low,Fast Choice Test,14/10/2023 0:04,107,1,25,11.49,11.25,11.25,0.9,889.01,788.7,551,keyboard,ChoiceRT_2019.v1.Jun19
+16,Low,Fast Choice Test,##########,148,1,25,11.49,10.92,10.92,1,916.02,848.35,327.22,keyboard,ChoiceRT_2019.v1.Jun19
+17,Low,Fast Choice Test,14/10/2023 1:03,116,1,25,11.49,13.8,13.8,0.9,724.88,688.1,196.41,keyboard,ChoiceRT_2019.v1.Jun19
+18,Low,Fast Choice Test,##########,114,1,25,11.49,13.82,13.82,1,723.4,661.85,173.57,keyboard,ChoiceRT_2019.v1.Jun19
+19,Low,Fast Choice Test,##########,108,1,25,11.49,14,14,0.966666667,714.1,739.5,148.76,keyboard,ChoiceRT_2019.v1.Jun19
+20,Low,Fast Choice Test,##########,170,1,25,11.49,13.52,13.52,0.933333333,739.47,708.9,180.29,keyboard,ChoiceRT_2019.v1.Jun19
+21,High,Fast Choice Test,##########,131,1,25,11.49,15.14,15.14,0.933333333,660.46,655.4,119.68,keyboard,ChoiceRT_2019.v1.Jun19
+22,High,Fast Choice Test,##########,110,1,25,11.49,9.8,9.8,0.866666667,1020.07,897.3,525.98,keyboard,ChoiceRT_2019.v1.Jun19
+23,High,Fast Choice Test,##########,89,1,25,11.49,15.7,15.7,1,636.97,637.2,81.75,keyboard,ChoiceRT_2019.v1.Jun19
+24,High,Fast Choice Test,##########,129,1,25,11.49,14.15,14.15,0.966666667,706.51,635.6,239,keyboard,ChoiceRT_2019.v1.Jun19
+25,High,Fast Choice Test,01/11/2023 6:22,107,1,25,11.49,12.91,12.91,0.9666666666666667,774.49,767,137.16,keyboard,ChoiceRT_2019.v1.Jun19
+26,Low,Fast Choice Test,##########,118,1,25,11.49,13.04,13.04,0.966666667,767.09,746.4,165.1,keyboard,ChoiceRT_2019.v1.Jun19
+27,Low,Fast Choice Test,18/10/2023 5:20,145,1,25,11.49,11.8,11.8,1,847.81,842.1,149.27,keyboard,ChoiceRT_2019.v1.Jun19
+28,Low,Fast Choice Test,20/10/2023 5:08,152,1,25,11.49,11.68,11.68,0.8666666666666667,855.97,724.25,323.54,keyboard,ChoiceRT_2019.v1.Jun19

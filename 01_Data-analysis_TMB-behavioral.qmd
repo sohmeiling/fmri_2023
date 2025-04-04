@@ -1,0 +1,203 @@
+---
+title: "Data_analysis-TMB-behavioral"
+format: html
+editor: visual
+---
+
+## TMB Tasks
+
+```{r}
+#| message = FALSE
+
+library(tidyverse)
+library(psych)
+```
+
+### Matrix Reasoning
+
+```{r}
+
+matrix_df <- read_csv("Summary_tasks/matrix.csv", show_col_types = FALSE)
+
+summary_stats_matrix <- matrix_df %>%
+  group_by(fluency) %>%
+  summarise(
+    mean_score = mean(score, na.rm = TRUE),
+    sd_score = sd(score, na.rm = TRUE)
+  )
+
+summary_stats_matrix
+```
+
+t-test
+
+```{r}
+#| echo: false
+
+t_test_matrix <- t.test(score ~ fluency, data = matrix_df, var.equal = TRUE)
+
+t_test_matrix
+
+var.test(score ~ fluency, data = matrix_df)
+
+```
+
+### Digit Symbol Matching
+
+```{r}
+
+digitSymbol_df <- read_csv("Summary_tasks/digitSymbol.csv", show_col_types = FALSE)
+
+summary_stats_digitSymbol <- digitSymbol_df %>%
+  group_by(fluency) %>%
+  summarise(
+    mean_score = mean(digitSymbol_num_correct, na.rm = TRUE),
+    sd_score = sd(digitSymbol_num_correct, na.rm = TRUE),
+     mean_rt = mean(digitSymbol_meanRTc, na.rm = TRUE),
+    sd_rt = sd(digitSymbol_meanRTc, na.rm = TRUE)
+  )
+
+summary_stats_digitSymbol
+```
+
+t-test
+
+```{r}
+#| echo: false
+
+#Accuracy
+t.test(digitSymbol_num_correct ~ fluency, data = digitSymbol_df, var.equal = TRUE)
+var.test(digitSymbol_num_correct ~ fluency, data = digitSymbol_df)
+
+
+#RT
+t.test(digitSymbol_meanRTc ~ fluency, data = digitSymbol_df, var.equal = TRUE)
+var.test(digitSymbol_meanRTc ~ fluency, data = digitSymbol_df)
+```
+
+### Trail-Making (A and B)
+
+```{r}
+trailMakingA_df <- read_csv("Summary_tasks/trailA.csv", show_col_types = FALSE)|>
+  mutate(part = "A")|>
+  select(-"Test Name": -errors)
+trailMakingB_df <- read_csv("Summary_tasks/trailB.csv", show_col_types = FALSE)|>
+  mutate(part = "B")|>
+      select(-"Test Name": -errors)
+
+summary_stats_trailMakingA <- trailMakingA_df %>%
+  group_by(fluency) %>%
+  summarise(
+     mean_rt = mean(totaltime, na.rm = TRUE),
+    sd_rt = sd(totaltime, na.rm = TRUE)
+  )
+
+summary_stats_trailMakingA
+
+summary_stats_trailMakingB <- trailMakingB_df %>%
+  group_by(fluency) %>%
+  summarise(
+     mean_rt = mean(totaltime, na.rm = TRUE),
+    sd_rt = sd(totaltime, na.rm = TRUE)
+  )
+
+summary_stats_trailMakingB
+```
+
+t-test
+
+```{r}
+#| echo: false
+
+#RT (Trail A)
+t.test(totaltime ~ fluency, data = trailMakingA_df, var.equal = TRUE)
+var.test(totaltime ~ fluency, data = trailMakingA_df)
+
+#RT (Trail B)
+t.test(totaltime ~ fluency, data = trailMakingB_df, var.equal = TRUE)
+var.test(totaltime ~ fluency, data = trailMakingB_df)
+```
+
+### Switching Cost in Trail-Making
+
+```{r}
+
+trailMaking_df <- bind_rows(trailMakingA_df, trailMakingB_df)|>
+  pivot_wider(names_from = part, values_from = totaltime, names_prefix = "totaltime_")|>
+  mutate(switching_cost = totaltime_B - totaltime_A)
+
+trailMaking_df %>%
+  group_by(fluency) %>%
+  summarise(
+    mean_switching_cost = mean(switching_cost, na.rm = TRUE),
+    sd_switching_cost = sd(switching_cost, na.rm = TRUE)
+  )
+```
+
+t-test
+
+```{r}
+#| echo: false
+
+#RT (Trail - Switch cost)
+t.test(switching_cost ~ fluency, data = trailMaking_df, var.equal = TRUE)
+var.test(switching_cost ~ fluency, data = trailMaking_df)
+```
+
+### Simple RT
+
+```{r}
+simpleRT_df <- read_csv("Summary_tasks/simpleRT.csv", show_col_types = FALSE)
+
+summary_stats_simpleRT <- simpleRT_df %>%
+  group_by(fluency) %>%
+  summarise(
+     mean_rt = mean(meanRT, na.rm = TRUE),
+    sd_rt = sd(meanRT, na.rm = TRUE)
+  )
+
+summary_stats_simpleRT
+```
+
+t-test
+
+```{r}
+#| echo: false
+
+#RT
+t.test(meanRT ~ fluency, data = simpleRT_df, var.equal = TRUE)
+var.test(meanRT ~ fluency, data = simpleRT_df)
+```
+
+### Choice RT
+
+```{r}
+
+choiceRT_df <- read_csv("Summary_tasks/choiceRT.csv", show_col_types = FALSE)
+
+summary_stats_choiceRT <- choiceRT_df %>%
+  group_by(fluency) %>%
+  summarise(
+      mean_accuracy = mean(correct, na.rm = TRUE),
+    sd_accuracy = sd(correct, na.rm = TRUE),
+     mean_rt = mean(medianRTc, na.rm = TRUE),
+    sd_rt = sd(medianRTc, na.rm = TRUE)
+  )
+
+summary_stats_choiceRT
+```
+
+t-test
+
+```{r}
+#| echo: false
+
+#Accuracy
+t.test(correct ~ fluency, data = choiceRT_df, var.equal = TRUE)
+var.test(correct ~ fluency, data = choiceRT_df)
+
+
+#RT
+t.test(medianRTc ~ fluency, data = choiceRT_df, var.equal = TRUE)
+var.test(medianRTc ~ fluency, data = choiceRT_df)
+```

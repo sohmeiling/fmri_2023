@@ -1,0 +1,32 @@
+﻿participant,mult_fluency_score,mult_fluency_group,id,Name,dob,testing_date,age,Gender,Handedness
+sub-03,60,High,EE1088313,Lin Hanwen,05/02/2001,15/07/2023,22.44,Male,Right
+sub-02,60,High,,Ren Mujie,26/07/2002,15/07/2023,20.97,Female,Right
+sub-11,18,Low,,Ooi Zee Ling,06/12/2002,15/07/2023,20.61,Female,Right
+sub-04,59,High,031223-10-1098,Kimberly Loh Mei Kei,23/12/2003,27/08/2023,19.68,Female,Right
+sub-05,60,High,980106-10-5934,Aysha Fateeha,06/04/1998,09/09/2023,25.43,Female,Right
+sub-06,58,High,020312-14-0810,Tan Wen Yi,12/03/2002,08/09/2023,21.49,Female,Right
+sub-12,13,Low,020401-14-1460,Natasha Yun Li,01/04/2002,09/09/2023,21.44,Female,Right
+sub-07,58,High,011006-07-0485,Lim Hongian,06/10/2001,21/09/2023,21.96,Male,Right
+sub-08,60,High,021210-07-0246,Lim Zhi Wei,10/12/2002,25/09/2023,20.79,Female,Right
+sub-13,17,Low,011202-10-0370,Nur IAN Maisara Binti Azhar,02/12/2001,29/09/2023,21.83,Female,Right
+sub-14,15,Low,010208-14-0985,Shamsul Bin Majid,08/02/2001,14/10/2023,22.68,Male,Right
+sub-15,20,Low,041222-10-0850,Dhia,22/12/2004,14/10/2023,18.81,Female,Right
+sub-16,20,Low,010908-01-0380,SITI NORALIA NATASHA BINTI BAHARUDDIN,08/09/2001,14/10/2023,22.10,Female,Right
+sub-17,20,Low,000223-10-1942,SITI AMINAH NIZAM BINTI ABDULLAH,23/02/2000,14/10/2023,23.64,Female,Right
+sub-18,21,Low,010730-14-0937,Thong Kean Shui,30/07/2001,14/10/2023,22.21,Male,Right
+sub-09,60,High,030317-08-0406,Ang Shu Yi,17/03/2003,14/10/2023,20.58,Female,Right
+sub-19,14,Low,021024-09-0139,MUHAMMAD FAUZAN BIN MAHADI,24/10/2002,15/10/2024,21.98,Male,Right
+sub-20,19,Low,030403-10-1066,Faith Lee May Shuen,03/04/2003,15/10/2023,20.53,Female,Right
+sub-21,59,High,030331-14-0807,Wong Chee Kin,31/03/2003,15/10/2023,20.54,Male,Right
+sub-26,17,Low,030109-10-0388,syarifah nursyaqirah bt syed norazman ,09/01/2003,16/10/2023,20.77,Female,Right
+sub-27,11,Low,000109-10-0209,Adli Bin Zahal ,09/01/2000,18/10/2023,23.77,Male,Right
+sub-28,18,Low,041207-14-1275,Tee Kai Yang,07/12/2004,21/10/2023,18.87,Male,Right
+sub-10,60,High,010808-05-0561,Bryan Chan Wei Hao,08/08/2001,21/10/2023,22.20,Male,Right
+sub-22,60,High,031026-12-1110,Shanice Ouh Yang Xuan ,26/10/2003,21/10/2023,19.99,Female,Right
+sub-24,60,High,020906-14-1124,PEK SHU HUI ALICIA,06/09/2002,23/10/2023,21.13,Female,Right
+sub-23,58,High,001026-01-0317,Ben Pong Jun Xiang,26/10/2000,25/10/2023,23.00,Male,Right
+sub-25,60,High,000330-10-0814,Audrey Phang,30/03/2000,01/11/2023,23.59,Female,Right
+sub-29,18,Low,021101160058,Faridah,01/11/2002,09/09/2023,20.86,Female,Right
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
